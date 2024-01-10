@@ -1,23 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState} from "react";
+import MyShifts from './components/MyShifts';
+import AvailableShifts from './components/AvailableShifts';
 
 function App() {
+  const [activeTab, setActiveTab] = useState("myShifts");
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      <div className="flex gap-6 pt-10 px-10">
+        <button
+          onClick={() => handleTabChange("myShifts")}
+          className={`text-3xl font-Medium ${
+            activeTab === "myShifts" ? "text-[#004FB4]" : "text-[#A4B8D3]"
+          }`}>
+          My Shifts
+        </button>
+        <button
+          onClick={() => handleTabChange("availableShifts")}
+          className={`text-3xl font-Medium ${
+            activeTab === "availableShifts"
+              ? "text-[#004FB4]"
+              : "text-[#A4B8D3]"
+          }`}>
+          Available Shifts
+        </button>
+      </div>
+      {activeTab === "myShifts" ? (
+        <MyShifts className="text-[#004FB4]" />
+      ) : (
+        <AvailableShifts className="text-[#A4B8D3]" />
+      )}
     </div>
   );
 }
