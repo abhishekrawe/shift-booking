@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 
 function AvailableShifts() {
   const [myShifts, setMyShifts] = useState([]);
   const [activeArea, setActiveArea] = useState("Helsinki");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchAllRestaurantList = async () => {
@@ -17,6 +19,18 @@ function AvailableShifts() {
     };
     fetchAllRestaurantList();
   }, []);
+
+  const bookShift = async (shiftId) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:8080/shifts/${shiftId}/book`
+      );
+      console.log("Shift booked:", res.data);
+      dispatch({ type: "BOOK_SHIFT", payload: res.data });
+    } catch (err) {
+      console.error("Error booking shift:", err);
+    }
+  };
 
   const uniqueAreas = [...new Set(myShifts.map((shift) => shift.area))];
 
@@ -97,11 +111,10 @@ function AvailableShifts() {
                       {formatTime(shift.endTime)}
                     </p>
                     <div className="flex gap-4">
-                      <button className="bg-transparent hover:bg-[#CAEFD8] text-[#16A64D] font-semibold hover:text-[#16A64D] px-6 border border-[#55CB82] hover:border-transparent rounded-3xl">
+                      <button
+                        className="bg-transparent hover:bg-[#CAEFD8] text-[#16A64D] font-semibold hover:text-[#16A64D] px-6 border border-[#55CB82] hover:border-transparent rounded-3xl"
+                        onClick={() => bookShift(shift.id)}>
                         Book
-                      </button>
-                      <button className="bg-transparent hover:bg-[#EED2DF] text-[#E2006A] font-semibold hover:text-[#E2006A] px-6 border border-[#DE93B3] hover:border-transparent rounded-3xl">
-                        Cancel
                       </button>
                     </div>
                   </div>
