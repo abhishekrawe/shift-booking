@@ -32,6 +32,18 @@ function AvailableShifts() {
     }
   };
 
+  const cancelShift = async (shiftId) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:8080/shifts/${shiftId}/cancel`
+      );
+      console.log("Shift canceled:", res.data);
+      dispatch({ type: "CANCEL_SHIFT", payload: { id: shiftId } });
+    } catch (err) {
+      console.error("Error cancelling shift:", err);
+    }
+  };
+
   const uniqueAreas = [...new Set(myShifts.map((shift) => shift.area))];
 
   const formatDateTime = (dateTime) => {
@@ -115,6 +127,11 @@ function AvailableShifts() {
                         className="bg-transparent hover:bg-[#CAEFD8] text-[#16A64D] font-semibold hover:text-[#16A64D] px-6 border border-[#55CB82] hover:border-transparent rounded-3xl"
                         onClick={() => bookShift(shift.id)}>
                         Book
+                      </button>
+                      <button
+                        className="bg-transparent hover:bg-[#EED2DF] text-[#E2006A] font-semibold hover:text-[#E2006A] px-6 border border-[#DE93B3] hover:border-transparent rounded-3xl"
+                        onClick={() => cancelShift(shift.id)}>
+                        Cancel
                       </button>
                     </div>
                   </div>
