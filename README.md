@@ -23,6 +23,8 @@ This temporary fix allows continued frontend development, prioritizing immediate
 
 ### `video ` 
 
+https://github.com/abhishekrawe/shift-booking/assets/65603830/adeb47fe-2d77-4c64-989f-f13c5373686e
+
 ## 💜 Shift booking application .
 - [x] The application according the design spec:
       
@@ -33,13 +35,10 @@ This temporary fix allows continued frontend development, prioritizing immediate
       
 ## My Shifts
 - [x] Lists all booked shifts
-- [ ] Shifts are grouped by dates
+- [x] Shifts are grouped by dates
 - [x] Shifts can be cancelled
 
-🐸 Tech Stack Used 🐸 - ReactJS , Redux , Tailwind CSS
+Facing issue, when we trying to modify overlapping issue , all the shifts are overlapped 
 
-
-
-
-
+![Screenshot 2024-01-14 020548](https://github.com/abhishekrawe/shift-booking/assets/65603830/0f36a793-65ce-4c96-b79c-891ec3f6e9d3)
 
