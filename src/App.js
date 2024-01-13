@@ -11,8 +11,8 @@ function App() {
   };
 
   return (
-    <div className="">
-      <div className="flex gap-6 pt-10 px-10">
+    <div className="text-center m-5">
+      <div className="flex justify-center gap-6 pt-10 px-10">
         <button
           onClick={() => handleTabChange("myShifts")}
           className={`text-3xl font-Medium ${

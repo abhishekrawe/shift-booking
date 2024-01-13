@@ -89,11 +89,42 @@ function AvailableShifts() {
     });
   };
 
+  // const isShiftBooked = (shift) => {
+  //   return shift.status === "booked";
+  // };
+
+  // const isShiftInProgress = (shift) => {
+  //   const now = new Date();
+  //   return now >= new Date(shift.startTime) && now <= new Date(shift.endTime);
+  // };
+
+  // const isShiftOverlapping = (shift, otherShift) => {
+  //   return (
+  //     new Date(shift.startTime) < new Date(otherShift.endTime) &&
+  //     new Date(shift.endTime) > new Date(otherShift.startTime)
+  //   );
+  // };
+
+  // const getButtonText = (shift) => {
+  //   if (isShiftBooked(shift)) {
+  //     return "Booked";
+  //   } else if (isShiftInProgress(shift)) {
+  //     return "Shift in Progress";
+  //   } else {
+  //     const overlappingShift = myShifts.find(
+  //       (otherShift) =>
+  //         otherShift.id !== shift.id && isShiftOverlapping(shift, otherShift)
+  //     );
+  //     return overlappingShift ? "Overlapping times" : "Book";
+  //   }
+  // };
+
+
   const groupedShifts = groupShiftsByDate();
 
   return (
-    <div className="m-10 py-5 border shadow-lg rounded-lg bg-white">
-      <div className="tabs-container flex">
+    <div className="m-10 w-full md:w-1/2 sm:1/2 p-4 mx-auto text-center py-5 border shadow-lg rounded-lg bg-white">
+      <div className="tabs-container flex justify-center">
         {uniqueAreas.map((area, index) => (
           <div
             key={index}
@@ -109,7 +140,7 @@ function AvailableShifts() {
         {activeArea &&
           Object.keys(groupedShifts).map((date, dateIndex) => (
             <div key={dateIndex}>
-              <h2 className="p-4 bg-gray-100 text-[#4F6C92] font-semibold">
+              <h2 className="p-4 bg-gray-100 text-[#4F6C92] font-semibold text-left">
                 {date}
               </h2>
 

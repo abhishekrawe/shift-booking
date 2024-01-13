@@ -28,18 +28,18 @@ function MyShifts() {
 
   return (
     <>
-      <div className="m-10 py-5 border shadow-lg rounded-lg bg-white">
+      <div className="m-10 w-full md:w-1/2 sm:1/2 p-4 mx-auto text-center py-5 border shadow-lg rounded-lg bg-white">
         <div className="content-container items-center justify-between">
           <div>
             {bookedShifts.map((shift, index) => (
               <div key={index}>
-                <h2 className="p-4 bg-gray-100 text-[#4F6C92] font-semibold">
+                <h2 className="p-4 bg-gray-100 text-[#4F6C92] font-semibold text-left">
                   {new Date(shift.startTime).toLocaleDateString([], {
                     weekday: "long",
                   })}
                 </h2>
                 <div className="flex justify-between p-4 text-[#004FB4] font-light ">
-                  <div className="flex flex-col">
+                  <div className="flex flex-col text-left">
                     <p>
                       {formatTime(shift.startTime)} -{" "}
                       {formatTime(shift.endTime)}
